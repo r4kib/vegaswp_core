@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Preview ICT
- * Date: 8/14/2016
- * Time: 5:34 PM
- */
-
 /*
 Plugin Name: Vegas WP Core
 Plugin URI: https://wordpress.org/plugins/health-check/
@@ -30,5 +23,17 @@ $updater->set_repository( 'vegaswp-core' );
 //$updater->authorize( 'abcdefghijk1234567890' ); // Your auth code goes here for private repos
 $updater->initialize();
 
-include "redux/options-init.php";
-
+//make this plugin to load first of all plugin
+function veagswp_this_plugin_first() {
+	// ensure path to this file is via main wp plugin path
+	$wp_path_to_this_file = preg_replace('/(.*)plugins\/(.*)$/', WP_PLUGIN_DIR."/$2", __FILE__);
+	$this_plugin = plugin_basename(trim($wp_path_to_this_file));
+	$active_plugins = get_option('active_plugins');
+	$this_plugin_key = array_search($this_plugin, $active_plugins);
+	if ($this_plugin_key) { // if it's 0 it's the first plugin already, no need to continue
+		array_splice($active_plugins, $this_plugin_key, 1);
+		array_unshift($active_plugins, $this_plugin);
+		update_option('active_plugins', $active_plugins);
+	}
+}
+add_action("init", "veagswp_this_plugin_first");

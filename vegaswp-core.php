@@ -37,3 +37,16 @@ function veagswp_this_plugin_first() {
 	}
 }
 add_action("init", "veagswp_this_plugin_first");
+
+//ading custom css
+function vegaswp_add_custom_admin_css() {
+	wp_register_style(
+			'vegaswp-custom-css',
+			plugins_url('/vegaswp_core/templates/style.css'),
+				time(),
+			'all'
+	);
+	wp_enqueue_style('vegaswp-custom-css');
+}
+// This example assumes your opt_name is set to redux_demo, replace with your opt_name value
+add_action( 'redux/page/vegaswp/enqueue', 'vegaswp_add_custom_admin_css');

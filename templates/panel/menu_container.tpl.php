@@ -48,4 +48,5 @@
         do_action ( "redux/page/{$this->parent->args[ 'opt_name' ]}/menu/after", $this );
 ?>
     </ul>
+    <div class="clear"></div>
 </div>

@@ -34,7 +34,7 @@
         'menu_type' => 'menu',
         'menu_title' => 'VegasWP',
         'allow_sub_menu' => TRUE,
-        'templates_path' => dirname(__FILE__).'/templates/panel',
+        'templates_path' => dirname(__FILE__).'/../templates/panel',
         'customizer' => TRUE,
         'default_mark' => '*',
         'hints' => array(

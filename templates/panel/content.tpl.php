@@ -9,7 +9,7 @@
      */
 ?>
 <!-- Header Block -->
-<?php $this->get_template( 'header.tpl.php' ); ?>
+<?php //$this->get_template( 'header.tpl.php' ); ?>
 
 <!-- Intro Text -->
 <?php if ( isset( $this->parent->args['intro_text'] ) ) { ?>
@@ -20,7 +20,7 @@
 
 <div class="redux-main">
     <!-- Stickybar -->
-    <?php $this->get_template( 'header_stickybar.tpl.php' ); ?>
+<?php $this->get_template( 'header_stickybar.tpl.php' ); ?>
     <div id="redux_ajax_overlay">&nbsp;</div>
     <?php
         foreach ($this->parent->sections as $k => $section) {
@@ -32,7 +32,7 @@
         $section['class'] = isset( $section['class'] ) ? ' ' . $section['class'] : '';
         echo '<div id="' . $k . '_section_group' . '" class="redux-group-tab' . esc_attr( $section['class'] ) . '" data-rel="' . $k . '">';
         //echo '<div id="' . $k . '_nav-bar' . '"';
-        /*
+  /*
     if ( !empty( $section['tab'] ) ) {
 
         echo '<div id="' . $k . '_section_tabs' . '" class="redux-section-tabs">';

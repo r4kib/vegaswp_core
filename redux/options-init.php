@@ -22,6 +22,7 @@
     $theme = wp_get_theme(); // For use with some settings. Not necessary.
 
     $args = array(
+        'dev_mode' => 'false',
         'opt_name' => 'vegaswp_options',
         'use_cdn' => TRUE,
         'display_name' => 'VegasWP Core Options',
@@ -29,11 +30,11 @@
         'page_title' => 'VegasWP Core Options',
         'menu_icon' => 'dashicons-awards',
         'page_slug'=> 'vegaswp_options',
-        'update_notice' => TRUE,
+        'update_notice' => false,
         'admin_bar' => TRUE,
         'menu_type' => 'menu',
         'menu_title' => 'VegasWP',
-        'allow_sub_menu' => TRUE,
+        'allow_sub_menu' => false,
         'templates_path' => dirname(__FILE__).'/../templates/panel',
         'customizer' => TRUE,
         'default_mark' => '*',
@@ -65,7 +66,8 @@
         'compiler' => TRUE,
         'page_permissions' => 'manage_options',
         'save_defaults' => TRUE,
-        'show_import_export' => TRUE,
+        'show_import_export' => false,
+        'show_options_object' => false,
         'database' => 'options',
         'transient_time' => '3600',
         'network_sites' => TRUE,
@@ -135,61 +137,84 @@
      */
 
     Redux::setSection( $opt_name, array(
-        'title'  => __( 'Basic Field', 'redux-framework-demo' ),
-        'id'     => 'basic',
-        'desc'   => __( 'Basic field with no subsections.', 'redux-framework-demo' ),
-        'icon'   => 'el el-home',
+        'title'  => __( 'Settings', 'vegaswp-core' ),
+        'id'     => 'settings',
+        'desc'   => __( 'Basic field with no subsections.', 'vegaswp-core' ),
+        'icon'   => '',
         'fields' => array(
             array(
                 'id'       => 'opt-text',
                 'type'     => 'text',
-                'title'    => __( 'Example Text', 'redux-framework-demo' ),
-                'desc'     => __( 'Example description.', 'redux-framework-demo' ),
-                'subtitle' => __( 'Example subtitle.', 'redux-framework-demo' ),
+                'title'    => __( 'Example Text', 'vegaswp-core' ),
+                'desc'     => __( 'Example description.', 'vegaswp-core' ),
+                'subtitle' => __( 'Example subtitle.', 'vegaswp-core' ),
             )
         )
     ) );
+Redux::setSection( $opt_name, array(
+    'title'  => __( 'Support', 'vegaswp-core' ),
+    'id'     => 'support-subsection',
+    'desc'   => __( "<iframe src='http://vegaswp.com/support/' width='100%' height='800px' ></iframe>", 'vegaswp-core' ),
+    'icon'   => '',
 
-    Redux::setSection( $opt_name, array(
-        'title' => __( 'Basic Fields', 'redux-framework-demo' ),
-        'id'    => 'basic',
-        'desc'  => __( 'Basic fields as subsections.', 'redux-framework-demo' ),
-        'icon'  => 'el el-home'
-    ) );
+) );
 
-    Redux::setSection( $opt_name, array(
-        'title'      => __( 'Text', 'redux-framework-demo' ),
-        'desc'       => __( 'For full documentation on this field, visit: ', 'redux-framework-demo' ) . '<a href="http://docs.reduxframework.com/core/fields/text/" target="_blank">http://docs.reduxframework.com/core/fields/text/</a>',
-        'id'         => 'opt-text-subsection',
-        'subsection' => true,
-        'fields'     => array(
-            array(
-                'id'       => 'text-example',
-                'type'     => 'text',
-                'title'    => __( 'Text Field', 'redux-framework-demo' ),
-                'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
-                'desc'     => __( 'Field Description', 'redux-framework-demo' ),
-                'default'  => 'Default Text',
-            ),
-        )
-    ) );
+Redux::setSection( $opt_name, array(
+    'title'  => __( 'Documentation', 'vegaswp-core' ),
+    'id'     => 'documentation',
+    'desc'   => __( "<iframe src='http://vegaswp.com/docs/plugin-1/' width='100%' height='800px' ></iframe>", 'vegaswp-core' ),
+    'icon'   => '',
 
-    Redux::setSection( $opt_name, array(
-        'title'      => __( 'Text Area', 'redux-framework-demo' ),
-        'desc'       => __( 'For full documentation on this field, visit: ', 'redux-framework-demo' ) . '<a href="http://docs.reduxframework.com/core/fields/textarea/" target="_blank">http://docs.reduxframework.com/core/fields/textarea/</a>',
-        'id'         => 'opt-textarea-subsection',
-        'subsection' => true,
-        'fields'     => array(
-            array(
-                'id'       => 'textarea-example',
-                'type'     => 'textarea',
-                'title'    => __( 'Text Area Field', 'redux-framework-demo' ),
-                'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
-                'desc'     => __( 'Field Description', 'redux-framework-demo' ),
-                'default'  => 'Default Text',
-            ),
-        )
-    ) );
+) );
+
+Redux::setSection( $opt_name, array(
+    'title'  => __( 'Our Plugins', 'vegaswp-core' ),
+    'id'     => 'our-plugins',
+    'desc'   => __( "HTML code goes here will come from plugin licensing and distribution API ", 'vegaswp-core' ),
+    'icon'   => '',
+
+) );
+
+//    Redux::setSection( $opt_name, array(
+//        'title' => __( 'Basic Fields', 'vegaswp-core' ),
+//        'id'    => 'basic',
+//        'desc'  => __( 'Basic fields as subsections.', 'vegaswp-core' ),
+//        'icon'  => 'el el-home'
+//    ) );
+
+//    Redux::setSection( $opt_name, array(
+//        'title'      => __( 'Text', 'vegaswp-core' ),
+//        'desc'       => __( 'For full documentation on this field, visit: ', 'vegaswp-core' ) . '<a href="http://docs.reduxframework.com/core/fields/text/" target="_blank">http://docs.reduxframework.com/core/fields/text/</a>',
+//        'id'         => 'opt-text-subsection',
+//        'subsection' => true,
+//        'fields'     => array(
+//            array(
+//                'id'       => 'text-example',
+//                'type'     => 'text',
+//                'title'    => __( 'Text Field', 'vegaswp-core' ),
+//                'subtitle' => __( 'Subtitle', 'vegaswp-core' ),
+//                'desc'     => __( 'Field Description', 'vegaswp-core' ),
+//                'default'  => 'Default Text',
+//            ),
+//        )
+//    ) );
+//
+//    Redux::setSection( $opt_name, array(
+//        'title'      => __( 'Text Area', 'vegaswp-core' ),
+//        'desc'       => __( 'For full documentation on this field, visit: ', 'vegaswp-core' ) . '<a href="http://docs.reduxframework.com/core/fields/textarea/" target="_blank">http://docs.reduxframework.com/core/fields/textarea/</a>',
+//        'id'         => 'opt-textarea-subsection',
+//        'subsection' => true,
+//        'fields'     => array(
+//            array(
+//                'id'       => 'textarea-example',
+//                'type'     => 'textarea',
+//                'title'    => __( 'Text Area Field', 'vegaswp-core' ),
+//                'subtitle' => __( 'Subtitle', 'vegaswp-core' ),
+//                'desc'     => __( 'Field Description', 'vegaswp-core' ),
+//                'default'  => 'Default Text',
+//            ),
+//        )
+//    ) );
 
     /*
      * <--- END SECTIONS

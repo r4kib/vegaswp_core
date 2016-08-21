@@ -50,3 +50,9 @@ function vegaswp_add_custom_admin_css() {
 }
 // This example assumes your opt_name is set to redux_demo, replace with your opt_name value
 add_action( 'redux/page/vegaswp/enqueue', 'vegaswp_add_custom_admin_css');
+
+/** remove redux menu under the tools **/
+add_action( 'admin_menu', 'remove_redux_menu',12 );
+function remove_redux_menu() {
+	remove_submenu_page('tools.php','redux-about');
+}

@@ -56,3 +56,10 @@ add_action( 'admin_menu', 'remove_redux_menu',12 );
 function remove_redux_menu() {
 	remove_submenu_page('tools.php','redux-about');
 }
+
+//add submenu global settings
+function vegaswp_add_submenu_page() {
+	add_submenu_page( "vegaswp_options", "Global Settings", "Global Settings", 'manage_options',"admin.php?page=vegaswp_options");
+}
+add_action( 'admin_menu', 'vegaswp_add_submenu_page');
+//var_dump($submenu);
